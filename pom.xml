@@ -244,6 +244,7 @@
 
 
 	<build>
+		<finalName>demo-colony1-0.0.1-SNAPSHOT.jar</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
