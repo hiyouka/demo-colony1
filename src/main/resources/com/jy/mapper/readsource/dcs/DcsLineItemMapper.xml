@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jy.mapper.readsource.dcs.DcsLineItemMapper" >
+  <resultMap id="BaseResultMap" type="com.jy.model.dcs.DcsLineItem" >
+    <id column="REC_ID" property="recId" jdbcType="BIGINT" />
+    <result column="LINE_ID" property="lineId" jdbcType="VARCHAR" />
+    <result column="LINE_NAME" property="lineName" jdbcType="VARCHAR" />
+    <result column="NODE_ID" property="nodeId" jdbcType="VARCHAR" />
+    <result column="NODE_NAME" property="nodeName" jdbcType="VARCHAR" />
+    <result column="DEVICE_ID" property="deviceId" jdbcType="VARCHAR" />
+    <result column="DEVICE_NAME" property="deviceName" jdbcType="VARCHAR" />
+    <result column="PART_ID" property="partId" jdbcType="VARCHAR" />
+    <result column="PART_NAME" property="partName" jdbcType="VARCHAR" />
+    <result column="ITEM_ID" property="itemId" jdbcType="VARCHAR" />
+    <result column="ITEM_NAME" property="itemName" jdbcType="VARCHAR" />
+    <result column="ITEM_VAL_ORG" property="itemValOrg" jdbcType="VARCHAR" />
+    <result column="ITEM_VAL" property="itemVal" jdbcType="VARCHAR" />
+    <result column="DCS_DTTM" property="dcsDttm" jdbcType="VARCHAR" />
+    <result column="ETL_DTTM" property="etlDttm" jdbcType="VARCHAR" />
+    <result column="DCS_YEAR" property="dcsYear" jdbcType="INTEGER" />
+    <result column="DCS_MONTH" property="dcsMonth" jdbcType="INTEGER" />
+    <result column="DCS_DAY" property="dcsDay" jdbcType="INTEGER" />
+    <result column="DCS_HOUR" property="dcsHour" jdbcType="INTEGER" />
+    <result column="DCS_MIN" property="dcsMin" jdbcType="INTEGER" />
+    <result column="DCS_SEC" property="dcsSec" jdbcType="INTEGER" />
+    <result column="DCS_MS" property="dcsMs" jdbcType="INTEGER" />
+    <result column="SOURCE_TYPE" property="sourceType" jdbcType="VARCHAR" />
+    <result column="SOURCE_ID" property="sourceId" jdbcType="VARCHAR" />
+    <result column="PRIVATOR" property="privator" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    REC_ID, LINE_ID, LINE_NAME, NODE_ID, NODE_NAME, DEVICE_ID, DEVICE_NAME, PART_ID, 
+    PART_NAME, ITEM_ID, ITEM_NAME, ITEM_VAL_ORG, ITEM_VAL, DCS_DTTM, ETL_DTTM, DCS_YEAR, 
+    DCS_MONTH, DCS_DAY, DCS_HOUR, DCS_MIN, DCS_SEC, DCS_MS, SOURCE_TYPE, SOURCE_ID, PRIVATOR
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select
+    <include refid="Base_Column_List" />
+    from dcs_line_item
+    where REC_ID = #{recId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from dcs_line_item
+    where REC_ID = #{recId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.jy.model.dcs.DcsLineItem" >
+    insert into dcs_line_item (REC_ID, LINE_ID, LINE_NAME, 
+      NODE_ID, NODE_NAME, DEVICE_ID, 
+      DEVICE_NAME, PART_ID, PART_NAME, 
+      ITEM_ID, ITEM_NAME, ITEM_VAL_ORG, 
+      ITEM_VAL, DCS_DTTM, ETL_DTTM, 
+      DCS_YEAR, DCS_MONTH, DCS_DAY, 
+      DCS_HOUR, DCS_MIN, DCS_SEC, 
+      DCS_MS, SOURCE_TYPE, SOURCE_ID, 
+      PRIVATOR)
+    values (#{recId,jdbcType=BIGINT}, #{lineId,jdbcType=VARCHAR}, #{lineName,jdbcType=VARCHAR}, 
+      #{nodeId,jdbcType=VARCHAR}, #{nodeName,jdbcType=VARCHAR}, #{deviceId,jdbcType=VARCHAR}, 
+      #{deviceName,jdbcType=VARCHAR}, #{partId,jdbcType=VARCHAR}, #{partName,jdbcType=VARCHAR}, 
+      #{itemId,jdbcType=VARCHAR}, #{itemName,jdbcType=VARCHAR}, #{itemValOrg,jdbcType=VARCHAR}, 
+      #{itemVal,jdbcType=VARCHAR}, #{dcsDttm,jdbcType=VARCHAR}, #{etlDttm,jdbcType=VARCHAR}, 
+      #{dcsYear,jdbcType=INTEGER}, #{dcsMonth,jdbcType=INTEGER}, #{dcsDay,jdbcType=INTEGER}, 
+      #{dcsHour,jdbcType=INTEGER}, #{dcsMin,jdbcType=INTEGER}, #{dcsSec,jdbcType=INTEGER}, 
+      #{dcsMs,jdbcType=INTEGER}, #{sourceType,jdbcType=VARCHAR}, #{sourceId,jdbcType=VARCHAR}, 
+      #{privator,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jy.model.dcs.DcsLineItem" >
+    insert into dcs_line_item
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="recId != null" >
+        REC_ID,
+      </if>
+      <if test="lineId != null" >
+        LINE_ID,
+      </if>
+      <if test="lineName != null" >
+        LINE_NAME,
+      </if>
+      <if test="nodeId != null" >
+        NODE_ID,
+      </if>
+      <if test="nodeName != null" >
+        NODE_NAME,
+      </if>
+      <if test="deviceId != null" >
+        DEVICE_ID,
+      </if>
+      <if test="deviceName != null" >
+        DEVICE_NAME,
+      </if>
+      <if test="partId != null" >
+        PART_ID,
+      </if>
+      <if test="partName != null" >
+        PART_NAME,
+      </if>
+      <if test="itemId != null" >
+        ITEM_ID,
+      </if>
+      <if test="itemName != null" >
+        ITEM_NAME,
+      </if>
+      <if test="itemValOrg != null" >
+        ITEM_VAL_ORG,
+      </if>
+      <if test="itemVal != null" >
+        ITEM_VAL,
+      </if>
+      <if test="dcsDttm != null" >
+        DCS_DTTM,
+      </if>
+      <if test="etlDttm != null" >
+        ETL_DTTM,
+      </if>
+      <if test="dcsYear != null" >
+        DCS_YEAR,
+      </if>
+      <if test="dcsMonth != null" >
+        DCS_MONTH,
+      </if>
+      <if test="dcsDay != null" >
+        DCS_DAY,
+      </if>
+      <if test="dcsHour != null" >
+        DCS_HOUR,
+      </if>
+      <if test="dcsMin != null" >
+        DCS_MIN,
+      </if>
+      <if test="dcsSec != null" >
+        DCS_SEC,
+      </if>
+      <if test="dcsMs != null" >
+        DCS_MS,
+      </if>
+      <if test="sourceType != null" >
+        SOURCE_TYPE,
+      </if>
+      <if test="sourceId != null" >
+        SOURCE_ID,
+      </if>
+      <if test="privator != null" >
+        PRIVATOR,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="recId != null" >
+        #{recId,jdbcType=BIGINT},
+      </if>
+      <if test="lineId != null" >
+        #{lineId,jdbcType=VARCHAR},
+      </if>
+      <if test="lineName != null" >
+        #{lineName,jdbcType=VARCHAR},
+      </if>
+      <if test="nodeId != null" >
+        #{nodeId,jdbcType=VARCHAR},
+      </if>
+      <if test="nodeName != null" >
+        #{nodeName,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceId != null" >
+        #{deviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceName != null" >
+        #{deviceName,jdbcType=VARCHAR},
+      </if>
+      <if test="partId != null" >
+        #{partId,jdbcType=VARCHAR},
+      </if>
+      <if test="partName != null" >
+        #{partName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemId != null" >
+        #{itemId,jdbcType=VARCHAR},
+      </if>
+      <if test="itemName != null" >
+        #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemValOrg != null" >
+        #{itemValOrg,jdbcType=VARCHAR},
+      </if>
+      <if test="itemVal != null" >
+        #{itemVal,jdbcType=VARCHAR},
+      </if>
+      <if test="dcsDttm != null" >
+        #{dcsDttm,jdbcType=VARCHAR},
+      </if>
+      <if test="etlDttm != null" >
+        #{etlDttm,jdbcType=VARCHAR},
+      </if>
+      <if test="dcsYear != null" >
+        #{dcsYear,jdbcType=INTEGER},
+      </if>
+      <if test="dcsMonth != null" >
+        #{dcsMonth,jdbcType=INTEGER},
+      </if>
+      <if test="dcsDay != null" >
+        #{dcsDay,jdbcType=INTEGER},
+      </if>
+      <if test="dcsHour != null" >
+        #{dcsHour,jdbcType=INTEGER},
+      </if>
+      <if test="dcsMin != null" >
+        #{dcsMin,jdbcType=INTEGER},
+      </if>
+      <if test="dcsSec != null" >
+        #{dcsSec,jdbcType=INTEGER},
+      </if>
+      <if test="dcsMs != null" >
+        #{dcsMs,jdbcType=INTEGER},
+      </if>
+      <if test="sourceType != null" >
+        #{sourceType,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceId != null" >
+        #{sourceId,jdbcType=VARCHAR},
+      </if>
+      <if test="privator != null" >
+        #{privator,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jy.model.dcs.DcsLineItem" >
+    update dcs_line_item
+    <set >
+      <if test="lineId != null" >
+        LINE_ID = #{lineId,jdbcType=VARCHAR},
+      </if>
+      <if test="lineName != null" >
+        LINE_NAME = #{lineName,jdbcType=VARCHAR},
+      </if>
+      <if test="nodeId != null" >
+        NODE_ID = #{nodeId,jdbcType=VARCHAR},
+      </if>
+      <if test="nodeName != null" >
+        NODE_NAME = #{nodeName,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceId != null" >
+        DEVICE_ID = #{deviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceName != null" >
+        DEVICE_NAME = #{deviceName,jdbcType=VARCHAR},
+      </if>
+      <if test="partId != null" >
+        PART_ID = #{partId,jdbcType=VARCHAR},
+      </if>
+      <if test="partName != null" >
+        PART_NAME = #{partName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemId != null" >
+        ITEM_ID = #{itemId,jdbcType=VARCHAR},
+      </if>
+      <if test="itemName != null" >
+        ITEM_NAME = #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemValOrg != null" >
+        ITEM_VAL_ORG = #{itemValOrg,jdbcType=VARCHAR},
+      </if>
+      <if test="itemVal != null" >
+        ITEM_VAL = #{itemVal,jdbcType=VARCHAR},
+      </if>
+      <if test="dcsDttm != null" >
+        DCS_DTTM = #{dcsDttm,jdbcType=VARCHAR},
+      </if>
+      <if test="etlDttm != null" >
+        ETL_DTTM = #{etlDttm,jdbcType=VARCHAR},
+      </if>
+      <if test="dcsYear != null" >
+        DCS_YEAR = #{dcsYear,jdbcType=INTEGER},
+      </if>
+      <if test="dcsMonth != null" >
+        DCS_MONTH = #{dcsMonth,jdbcType=INTEGER},
+      </if>
+      <if test="dcsDay != null" >
+        DCS_DAY = #{dcsDay,jdbcType=INTEGER},
+      </if>
+      <if test="dcsHour != null" >
+        DCS_HOUR = #{dcsHour,jdbcType=INTEGER},
+      </if>
+      <if test="dcsMin != null" >
+        DCS_MIN = #{dcsMin,jdbcType=INTEGER},
+      </if>
+      <if test="dcsSec != null" >
+        DCS_SEC = #{dcsSec,jdbcType=INTEGER},
+      </if>
+      <if test="dcsMs != null" >
+        DCS_MS = #{dcsMs,jdbcType=INTEGER},
+      </if>
+      <if test="sourceType != null" >
+        SOURCE_TYPE = #{sourceType,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceId != null" >
+        SOURCE_ID = #{sourceId,jdbcType=VARCHAR},
+      </if>
+      <if test="privator != null" >
+        PRIVATOR = #{privator,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where REC_ID = #{recId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jy.model.dcs.DcsLineItem" >
+    update dcs_line_item
+    set LINE_ID = #{lineId,jdbcType=VARCHAR},
+      LINE_NAME = #{lineName,jdbcType=VARCHAR},
+      NODE_ID = #{nodeId,jdbcType=VARCHAR},
+      NODE_NAME = #{nodeName,jdbcType=VARCHAR},
+      DEVICE_ID = #{deviceId,jdbcType=VARCHAR},
+      DEVICE_NAME = #{deviceName,jdbcType=VARCHAR},
+      PART_ID = #{partId,jdbcType=VARCHAR},
+      PART_NAME = #{partName,jdbcType=VARCHAR},
+      ITEM_ID = #{itemId,jdbcType=VARCHAR},
+      ITEM_NAME = #{itemName,jdbcType=VARCHAR},
+      ITEM_VAL_ORG = #{itemValOrg,jdbcType=VARCHAR},
+      ITEM_VAL = #{itemVal,jdbcType=VARCHAR},
+      DCS_DTTM = #{dcsDttm,jdbcType=VARCHAR},
+      ETL_DTTM = #{etlDttm,jdbcType=VARCHAR},
+      DCS_YEAR = #{dcsYear,jdbcType=INTEGER},
+      DCS_MONTH = #{dcsMonth,jdbcType=INTEGER},
+      DCS_DAY = #{dcsDay,jdbcType=INTEGER},
+      DCS_HOUR = #{dcsHour,jdbcType=INTEGER},
+      DCS_MIN = #{dcsMin,jdbcType=INTEGER},
+      DCS_SEC = #{dcsSec,jdbcType=INTEGER},
+      DCS_MS = #{dcsMs,jdbcType=INTEGER},
+      SOURCE_TYPE = #{sourceType,jdbcType=VARCHAR},
+      SOURCE_ID = #{sourceId,jdbcType=VARCHAR},
+      PRIVATOR = #{privator,jdbcType=VARCHAR}
+    where REC_ID = #{recId,jdbcType=BIGINT}
+  </update>
+</mapper>
